@@ -86,6 +86,14 @@ const store = observable({
     // 검색 성공
     this.isSuccessSearch = true;
   },
+  setSearchKeyword(keyword){
+    // 키워드받아오기
+    this.searchWord = keyword;
+  },
+  setKeywordFix(){
+    // 받아온 키워드를 검색어로 설정
+    this.searchWordFix = this.searchWord;
+  },
   checkMovieLoad(movieObj){
     // 영화 로딩 체크
     if ( !_.isEmpty(movieObj) ) return this.isMovieLoded = true;

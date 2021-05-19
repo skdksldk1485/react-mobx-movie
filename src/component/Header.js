@@ -57,11 +57,11 @@ const Header = (props) => {
     setValue(value);
   };
   const handleKeywordChange = (e) => {
-    store._setSearchKeyword(e.target.value);
+    store.setSearchKeyword(e.target.value);
   };
   const handleSearch = () => {
-    store._setKeywordFix();
-    store._getMovies(4);
+    store.setKeywordFix();
+    store.getMovies(4);
   };
   const handleKeypress = (e) => {
     if (e.key === 'Enter') {
@@ -72,6 +72,17 @@ const Header = (props) => {
   return useObserver(() => (
     <header className={store.isMovieSelected ? 'Header on' : 'Header'}>
       <div className="Header__Inner">
+        <div className="Search__Wrap">
+          <input
+            type="text"
+            placeholder="검색하기"
+            onChange={handleKeywordChange}
+            onKeyPress={handleKeypress}
+          />
+          <i className="fas fa-search"
+            onClick={handleSearch}
+          ></i>
+        </div>
         <Tabs
           value={value}
           onChange={handleChange1}
