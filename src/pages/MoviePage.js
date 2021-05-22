@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useObserver } from 'mobx-react-lite';
 import Movie from '../component/Movie';
-import '../css/Movie.css';
 import bgpng from '../images/bg.png';
 import store from '../store/MovieStore';
 
@@ -35,18 +34,17 @@ const MoviePage = () => {
         opacity: '.5'
         };
 
-    return useObserver(() => (
-      <>
-      <div className={store.isMovieSelected ? 'Movie__Section on' : 'Movie__Section'}>
-        <h3>{store.sortMethodName}</h3>
-        <div className="Movie__Wrapper">
-          { store.isMovieLoded ? renderMovie() : <div className="Loading"></div> }
-          { store.isSuccessSearch ? null : <div className="Search__Failed"><strong>{store.searchWordFix}</strong> 로 검색한 결과가 없습니다.</div>}
-        </div>
+  return useObserver(() => (
+    <>
+    <div className={store.isMovieSelected ? 'Movie__Section on' : 'Movie__Section'}>
+      <h3>{store.sortMethodName}</h3>
+      <div className="Movie__Wrapper">
+        { store.isMovieLoded ? renderMovie() : <div className="Loading"></div> }
+        { store.isSuccessSearch ? null : <div className="Search__Failed"><strong>{store.searchWordFix}</strong> 로 검색한 결과가 없습니다.</div>}
       </div>
-      </>
-    ));
-  //}
+    </div>
+    </>
+  ));
 }
 
 export default MoviePage;
