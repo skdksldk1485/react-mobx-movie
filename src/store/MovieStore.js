@@ -103,6 +103,14 @@ const store = observable({
     // 메인 BG 영화리스트와 동기화
     this.movieBg = theMovieBg;
   },
+  movieSelectToggle(){
+    // 영화 선택시 화면전환 토글
+    if ( !this.isMovieSelected ) this.isMovieSelected = !this.isMovieSelected;
+  },
+  setBgRestore(){
+    // 메인BG 초기화
+    this.changeMovieBg(this.selectedMovie.backdrop_path);
+  },
 
 })
 

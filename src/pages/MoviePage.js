@@ -7,9 +7,12 @@ import store from '../store/MovieStore';
 
 const MoviePage = () => {
 
+  const posterUrl = 'https://image.tmdb.org/t/p/original';
+  let bgStyle = null;
+
   useEffect(() => {
     store.getMovies(0);
-  }, [store]);
+  }, []);
 
   const renderMovie = () => {
     const movies = store.movieList.map(movie => {
@@ -26,16 +29,21 @@ const MoviePage = () => {
     return movies;
  };
 
-  const posterUrl = 'https://image.tmdb.org/t/p/original';
-  const bgStyle = {
-        backgroundImage: 'url('+bgpng+'), url(' + posterUrl + store.movieBg + ')',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center center',
-        opacity: '.5'
-        };
+  return useObserver((
+    bgStyle = {
+          backgroundImage: 'url(' + posterUrl + store.movieBg + ')',
+          backgroundSize: "cover",
+          backgroundPosition: "center center",
+          opacity: ".5"
+        }
 
-  return useObserver(() => (
+  ) => (
     <>
+    <div className={store.isMovieSelected ? 'Detail__View on' : 'Detail__View'}>
+      <div className="Movie__Bg">
+        <div className="Bg" style={bgStyle} />
+      </div>
+    </div>
     <div className={store.isMovieSelected ? 'Movie__Section on' : 'Movie__Section'}>
       <h3>{store.sortMethodName}</h3>
       <div className="Movie__Wrapper">
