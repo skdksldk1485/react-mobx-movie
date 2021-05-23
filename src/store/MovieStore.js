@@ -11,6 +11,14 @@ const store = observable({
   movieBg: '', // 메인 bg
   isMovieSelected: false, // 영화가 선택되었는지 체크
   selectedMovie: [], // 선택된 영화
+  searchWord: '', // 검색어
+  searchWordFix: '',
+  recommendedMovie: [], // 추천 영화
+  recommendCount: 3, // 추천영화 갯수
+  movieTrailer: [], // 트레일러
+  movieTrailerKey: '',
+  isExisTrailer: false,
+  isShowTrailer: false,
 
   getApi(sortPram){
     // API 불러오기
@@ -111,7 +119,24 @@ const store = observable({
     // 메인BG 초기화
     this.changeMovieBg(this.selectedMovie.backdrop_path);
   },
-
+  backHome(){
+    // 뒤로가기
+    this.isMovieSelected = false;
+  },
+  setClearSelectedMovie(){
+    // 선택된 영화 초기화
+    this.selectedMovie = {};
+  },
+  setRecommendCountRestore(){
+    // 선택된 영화 더 불러오기 카운트 초기화
+    this.recommendCount = 3;
+  },
+  setCastCountRestore(){
+    this.castCount = 3;
+  },
+  setHideTrailer(){
+    this.isShowTrailer = false;
+  }
 })
 
 export default store;
