@@ -36,7 +36,7 @@ const styles = {
 
 const Header = (props) => {
 
-  const [value, setValue] = useState(0);
+  const [value1, setValue1] = useState(0);
   const [value2, setValue2] = useState(0);
 
   const classes = props;
@@ -54,10 +54,10 @@ const Header = (props) => {
     store.getMovies(3);
   };
   const handleChange1 = (event, value) => {
-    setValue(value);
+    setValue1(value1);
   };
   const handleChange2 = (event, value) => {
-    setValue(value2);
+    setValue2(value2);
   };
   const handleKeywordChange = (e) => {
     store.setSearchKeyword(e.target.value);
@@ -82,7 +82,7 @@ const Header = (props) => {
   return useObserver(() => (
     <header className={store.isMovieSelected ? 'Header on' : 'Header'}>
       <div className="Header__Inner">
-        <div className="Search__Wrap">
+        <div className="Header__Search">
           <input
             type="text"
             placeholder="검색하기"
@@ -94,7 +94,7 @@ const Header = (props) => {
           ></i>
         </div>
         <Tabs
-          value={value}
+          value={value1}
           onChange={handleChange1}
           classes={{ root: classes.tabsRoot, indicator: classes.tabsIndicator }}
         >
@@ -120,7 +120,7 @@ const Header = (props) => {
           />
         </Tabs>
       </div>
-      <div className="Back__Home">
+      <div className="Header__Back">
         <Tabs
           value={value2}
           onChange={handleChange2}
