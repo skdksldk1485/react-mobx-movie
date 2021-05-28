@@ -13,14 +13,11 @@ const store = observable({
   selectedMovie: [], // 선택된 영화
   searchWord: '', // 검색어
   searchWordFix: '',
-  recommendedMovie: [], // 추천 영화
-  recommendCount: 3, // 추천영화 갯수
   movieTrailer: [], // 트레일러
   movieTrailerKey: '',
   isExisTrailer: false,
   isShowTrailer: false,
 
-  credits: [],
   director: '',
   cast: [],
   castCount: 3,
@@ -131,10 +128,15 @@ const store = observable({
     // 선택된 영화 더 불러오기 카운트 초기화
     this.recommendCount = 3;
   },
+  setHideTrailer(){
+    this.isShowTrailer = false;
+  },
   upCastCount(){
     this.castCount += 8;
   },
-
+  setShowTrailer(){
+    this.isShowTrailer = true;
+  },
   async getRecommendMovie(id){
     // 추천영화 동기화
     const rMovie = await this.callRecommendMovie(id);
@@ -148,6 +150,7 @@ const store = observable({
     const sMovie = await this.callDetail(id);
     this.setDetailInfo(sMovie);
     // console.log(this.selectedMovie);
+    this.getTrailer(id);
   },
   callDetail(id){
     // 영화 선택시 디테일정보 호출
@@ -164,7 +167,57 @@ const store = observable({
     // 디테일정보 동기화
     this.selectedMovie = detailInfo;
   },
+  async getTrailer(id){
+    // 트레일러 동기화
+    const trailer = await this.callTrailer(id);
+    this.setTrailer(trailer.results);
+    if ( this.movieTrailer.length > 0 ) {
+      this.setTrueTrailer();
+      this.movieTrailerKey = this.movieTrailer[0].key;
+    } else {
+      this.setFalseTrailer();
+      this.movieTrailerKey = '';
+    }
+  },
+  callTrailer(id){
+    // 트레일러 호출
+    const DEFAULT_URL = 'https://api.themoviedb.org/3';
+    const API_KEY = '?api_key=dc11dbd0605b4d60cc66ce5e8363e063';
+    const LANGUAGE_KR = '&language=ko-KR';
+    const TRAILER_MOVIE_ID = '/movie/'+id+'/videos';
 
+    return axios.get(DEFAULT_URL + TRAILER_MOVIE_ID + API_KEY + LANGUAGE_KR)
+      .then (response => response.data)
+      .catch (err => console.log(err))
+  },
+  setTrailer(trailer){
+    // 트레일러 동기화
+    this.movieTrailer = trailer;
+  },
+  setTrueTrailer(){
+    this.isExisTrailer = true;
+  },
+  setFalseTrailer(){
+    this.isExisTrailer = false;
+  },
+  setCredits(creditObj){
+    this.credits = creditObj;
+  },
+  getDirector(){
+    const director = this.credits.crew.filter(obj => obj.job === 'Director');
+    this.director = {
+      name: director[0].name,
+      path: director[0].profile_path
+    };
+  //   console.log(director[0].name);
+  },
+  getCast(){
+    const cast = this.credits.cast.map(obj => obj);
+    this.cast = cast;
+  },
+  setCastCountRestore(){
+    this.castCount = 3;
+  },
 })
 
 export default store;
