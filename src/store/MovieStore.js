@@ -20,6 +20,11 @@ const store = observable({
   isExisTrailer: false,
   isShowTrailer: false,
 
+  credits: [],
+  director: '',
+  cast: [],
+  castCount: 3,
+
   getApi(sortPram){
     // API 불러오기
     let SORT = '';
@@ -83,7 +88,7 @@ const store = observable({
   },
   setMovie(movieData){
     // 영화리스트 동기화
-    this.movieList = movieData
+    this.movieList = movieData;
   },
   checkMovieLoad(movieObj){
     // 영화 로딩 체크
@@ -101,11 +106,6 @@ const store = observable({
   setKeywordFix(){
     // 받아온 키워드를 검색어로 설정
     this.searchWordFix = this.searchWord;
-  },
-  checkMovieLoad(movieObj){
-    // 영화 로딩 체크
-    if ( !_.isEmpty(movieObj) ) return this.isMovieLoded = true;
-    else return false;
   },
   changeMovieBg(theMovieBg){
     // 메인 BG 영화리스트와 동기화
@@ -131,12 +131,40 @@ const store = observable({
     // 선택된 영화 더 불러오기 카운트 초기화
     this.recommendCount = 3;
   },
-  setCastCountRestore(){
-    this.castCount = 3;
+  upCastCount(){
+    this.castCount += 8;
   },
-  setHideTrailer(){
-    this.isShowTrailer = false;
-  }
+
+  async getRecommendMovie(id){
+    // 추천영화 동기화
+    const rMovie = await this.callRecommendMovie(id);
+    this.setRecommendMovie(rMovie.results);
+  },
+  recommendMore(){
+    // 선택된 영화 더 불러오기
+    this.recommendCount = this.recommendCount + 6;
+  },
+  async getDetailMovie(id){
+    const sMovie = await this.callDetail(id);
+    this.setDetailInfo(sMovie);
+    // console.log(this.selectedMovie);
+  },
+  callDetail(id){
+    // 영화 선택시 디테일정보 호출
+    const DEFAULT_URL = 'https://api.themoviedb.org/3';
+    const API_KEY = '?api_key=dc11dbd0605b4d60cc66ce5e8363e063';
+    const LANGUAGE_KR = '&language=ko-KR';
+    const MOVIE_ID = '/movie/'+id;
+
+    return axios.get(DEFAULT_URL + MOVIE_ID + API_KEY + LANGUAGE_KR)
+      .then (response => response.data)
+      .catch (err => console.log(err))
+  },
+  setDetailInfo(detailInfo){
+    // 디테일정보 동기화
+    this.selectedMovie = detailInfo;
+  },
+
 })
 
 export default store;
