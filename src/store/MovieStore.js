@@ -18,6 +18,7 @@ const store = observable({
   isExisTrailer: false,
   isShowTrailer: false,
 
+  credits: [],
   director: '',
   cast: [],
   castCount: 3,
@@ -124,10 +125,6 @@ const store = observable({
     // 선택된 영화 초기화
     this.selectedMovie = {};
   },
-  setRecommendCountRestore(){
-    // 선택된 영화 더 불러오기 카운트 초기화
-    this.recommendCount = 3;
-  },
   setHideTrailer(){
     this.isShowTrailer = false;
   },
@@ -137,20 +134,12 @@ const store = observable({
   setShowTrailer(){
     this.isShowTrailer = true;
   },
-  async getRecommendMovie(id){
-    // 추천영화 동기화
-    const rMovie = await this.callRecommendMovie(id);
-    this.setRecommendMovie(rMovie.results);
-  },
-  recommendMore(){
-    // 선택된 영화 더 불러오기
-    this.recommendCount = this.recommendCount + 6;
-  },
   async getDetailMovie(id){
     const sMovie = await this.callDetail(id);
     this.setDetailInfo(sMovie);
     // console.log(this.selectedMovie);
     this.getTrailer(id);
+    this.getCredit(id);
   },
   callDetail(id){
     // 영화 선택시 디테일정보 호출
@@ -179,6 +168,12 @@ const store = observable({
       this.movieTrailerKey = '';
     }
   },
+  async getCredit(id){
+    const credit = await this.callCredit(id);
+    this.setCredits(credit);
+    this.getDirector();
+    this.getCast();
+  },
   callTrailer(id){
     // 트레일러 호출
     const DEFAULT_URL = 'https://api.themoviedb.org/3';
@@ -187,6 +182,16 @@ const store = observable({
     const TRAILER_MOVIE_ID = '/movie/'+id+'/videos';
 
     return axios.get(DEFAULT_URL + TRAILER_MOVIE_ID + API_KEY + LANGUAGE_KR)
+      .then (response => response.data)
+      .catch (err => console.log(err))
+  },
+  callCredit(id){
+    const DEFAULT_URL = 'https://api.themoviedb.org/3';
+    const API_KEY = '?api_key=dc11dbd0605b4d60cc66ce5e8363e063';
+    const LANGUAGE_KR = '&language=ko-KR';
+    const CREDIT_MOVIE_ID = '/movie/'+id+'/credits';
+
+    return axios.get(DEFAULT_URL + CREDIT_MOVIE_ID + API_KEY + LANGUAGE_KR)
       .then (response => response.data)
       .catch (err => console.log(err))
   },
@@ -218,6 +223,7 @@ const store = observable({
   setCastCountRestore(){
     this.castCount = 3;
   },
+
 })
 
 export default store;

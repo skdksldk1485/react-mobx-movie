@@ -1,5 +1,6 @@
 import React from 'react';
 import { useObserver } from 'mobx-react-lite';
+import Credits from './Credits';
 import store from '../store/MovieStore';
 
 const MovieDetail = (props) => {
@@ -36,6 +37,7 @@ const MovieDetail = (props) => {
         <p className="Detail__Summary">{props.summary}</p>
 
       </div>
+      <Credits />
     </>
   ));
 }
