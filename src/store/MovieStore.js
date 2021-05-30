@@ -13,6 +13,8 @@ const store = observable({
   selectedMovie: [], // 선택된 영화
   searchWord: '', // 검색어
   searchWordFix: '',
+  recommendedMovie: [], // 추천 영화
+  recommendCount: 3, // 추천영화 갯수
   movieTrailer: [], // 트레일러
   movieTrailerKey: '',
   isExisTrailer: false,
@@ -125,6 +127,10 @@ const store = observable({
     // 선택된 영화 초기화
     this.selectedMovie = {};
   },
+  setRecommendCountRestore(){
+    // 선택된 영화 더 불러오기 카운트 초기화
+    this.recommendCount = 3;
+  },
   setHideTrailer(){
     this.isShowTrailer = false;
   },
@@ -133,6 +139,15 @@ const store = observable({
   },
   setShowTrailer(){
     this.isShowTrailer = true;
+  },
+  async getRecommendMovie(id){
+    // 추천영화 동기화
+    const rMovie = await this.callRecommendMovie(id);
+    this.setRecommendMovie(rMovie.results);
+  },
+  recommendMore(){
+    // 선택된 영화 더 불러오기
+    this.recommendCount = this.recommendCount + 6;
   },
   async getDetailMovie(id){
     const sMovie = await this.callDetail(id);
@@ -223,7 +238,21 @@ const store = observable({
   setCastCountRestore(){
     this.castCount = 3;
   },
+  callRecommendMovie(id){
+    // 추천영화 호출
+    const DEFAULT_URL = 'https://api.themoviedb.org/3';
+    const API_KEY = '?api_key=dc11dbd0605b4d60cc66ce5e8363e063';
+    const LANGUAGE_KR = '&language=ko-KR';
+    const RECOMMEND_MOVIE_ID = '/movie/'+id+'/recommendations';
 
+    return axios.get(DEFAULT_URL + RECOMMEND_MOVIE_ID + API_KEY + LANGUAGE_KR)
+      .then (response => response.data)
+      .catch (err => console.log(err))
+  },
+  setRecommendMovie(recommendations){
+    // 추천영화 동기화
+    this.recommendedMovie = recommendations;
+  }
 })
 
 export default store;
