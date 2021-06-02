@@ -1,9 +1,3 @@
-:root {
-  --text-color: #eee5e9;
-  --background-color: #d2bcdb;
-  --accent-color: #8f148f52;
-}
-
 .Header {
     position: absolute;
     top: 0;
@@ -106,14 +100,7 @@
     cursor: pointer;
 }
 
-* {
-  box-sizing: border-box;
-  font-family: "Black Han Sans", sans-serif;
-}
-a {
-  text-decoration: none;
-  color: var(--text-color);
-}
+
 .navbar {
   justify-content: space-between;
   display: none;

@@ -61,22 +61,22 @@ const MoviePage = () => {
 
   ) => (
     <>
-    <div className={store.isMovieSelected ? 'Detail__View on' : 'Detail__View'}>
-      <div className={store.isMovieSelected ? 'Detail__View__Info on' : 'Detail__View__Info'} dir="rtl">
-        <div dir="ltr">{store.isMovieSelected ? renderDetail() : null}</div>
+      <div className={store.isMovieSelected ? 'Detail__View on' : 'Detail__View'}>
+        <div className={store.isMovieSelected ? 'Detail__View__Info on' : 'Detail__View__Info'} dir="rtl">
+          <div dir="ltr">{store.isMovieSelected ? renderDetail() : null}</div>
+        </div>
+        <div className="Detail__View__Bg">
+          <div className="Detail__View__Bg__Bg" style={bgStyle} />
+          { store.isShowTrailer ? <div className="Movie__Trailer"><iframe width='100%' height='100%' src={'https://www.youtube.com/embed/'+ store.movieTrailerKey } frameborder='0' allow='autoplay; encrypted-media' allowfullscreen></iframe><div className="Movie__Close" onClick={handleCloseTrailer} title={store.selectedMovie.title}><i className="fas fa-times"></i></div></div> : null }
+        </div>
       </div>
-      <div className="Detail__View__Bg">
-        <div className="Detail__View__Bg__Bg" style={bgStyle} />
-        { store.isShowTrailer ? <div className="Movie__Trailer"><iframe width='100%' height='100%' src={'https://www.youtube.com/embed/'+ store.movieTrailerKey } frameborder='0' allow='autoplay; encrypted-media' allowfullscreen></iframe><div className="Movie__Close" onClick={handleCloseTrailer} title={store.selectedMovie.title}><i className="fas fa-times"></i></div></div> : null }
+      <div className={store.isMovieSelected ? 'Movie__Section on' : 'Movie__Section'}>
+        <h3>{store.sortMethodName}</h3>
+        <div className="Movie__Section__Wrapper">
+          { store.isMovieLoded ? renderMovie() : <div className="Movie__Section__Wrapper__Loading"></div> }
+          { store.isSuccessSearch ? null : <div className="Movie__Section__Wrapper__Search"><strong>{store.searchWordFix}</strong> 로 검색한 결과가 없습니다.</div>}
+        </div>
       </div>
-    </div>
-    <div className={store.isMovieSelected ? 'Movie__Section on' : 'Movie__Section'}>
-      <h3>{store.sortMethodName}</h3>
-      <div className="Movie__Section__Wrapper">
-        { store.isMovieLoded ? renderMovie() : <div className="Movie__Section__Wrapper__Loading"></div> }
-        { store.isSuccessSearch ? null : <div className="Movie__Section__Wrapper__Search"><strong>{store.searchWordFix}</strong> 로 검색한 결과가 없습니다.</div>}
-      </div>
-    </div>
     </>
   ));
 }
