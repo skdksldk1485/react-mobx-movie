@@ -16,8 +16,10 @@
       h3 {
         font-size: 24px;
         font-weight: 400;
+        z-index: 200;
         @include atMobile {
           z-index: 200;
+
         }
       }
       &__Wrapper {
