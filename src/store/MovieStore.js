@@ -39,27 +39,27 @@ const store = observable({
     const LANGUAGE_KR = '&language=ko-KR';
 
     if ( sortPram == '0') {
-      // 소트0 -> 현재상영중
+      // 현재상영중
       SORT = NOW_PLAYING;
       this.sortMethodName = '현재 상영중인 영화';
     }
     else if ( sortPram == '1' ) {
-    // 소트1 -> 최근인기있는 영화
+      // 최근 인기있는 영화
       SORT = TRENDING;
       this.sortMethodName = '최근 인기있는 영화'
     }
     else if (sortPram == '2') {
-      // 소트2 -> 고득점 영화
+      // 고득점 영화
       SORT = TOP_RATED;
       this.sortMethodName = '최근 평점높은 영화'
     }
     else if (sortPram == '3') {
-      // 소트3 -> 업커밍 영화
+      // 최신 영화
       SORT = UPCOMING;
       this.sortMethodName = '최근 개봉 & 예정 영화'
     }
     else if (sortPram == '4') {
-      // 소트4 -> 검색
+      // 검색
       SORT = SEARCH;
       this.sortMethodName = this.searchWordFix + ' 키워드로 검색한 영화'
 
@@ -76,11 +76,11 @@ const store = observable({
   async getMovies(sortPram){
     // 영화 리스트 불러오기
     const movies = await this.getApi(sortPram);
-    if ( movies.results.length <= 0) {
+
+    if ( movies == undefined ) {
       this.setSearchFailed();
     } else {
       this.setMovie(movies.results);
-      // console.log(this.movieList);
       this.setSearchSuccess();
       this.checkMovieLoad(this.movieList);
       this.changeMovieBg(this.movieList[0].backdrop_path);
@@ -98,6 +98,11 @@ const store = observable({
   setSearchSuccess(){
     // 검색 성공
     this.isSuccessSearch = true;
+  },
+  setSearchFailed(){
+    // 검색 실패
+    this.movieList = [];
+    this.isSuccessSearch = false;
   },
   setSearchKeyword(keyword){
     // 키워드받아오기
