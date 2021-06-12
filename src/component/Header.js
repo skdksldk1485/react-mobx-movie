@@ -85,17 +85,6 @@ const Header = (props) => {
     <header>
       <div className={store.isMovieSelected ? 'Header on' : 'Header'}>
         <div className="Header__Inner">
-          <div className="Header__Search">
-            <input
-              type="text"
-              placeholder="검색하기"
-              onChange={handleKeywordChange}
-              onKeyPress={handleKeypress}
-            />
-            <i className="fas fa-search"
-              onClick={handleSearch}
-            ></i>
-          </div>
           <div className="Header__Menu">
             <Tabs
               value={value1}
@@ -124,6 +113,17 @@ const Header = (props) => {
               />
             </Tabs>
           </div>
+          <div className="Header__Search">
+            <input
+              type="text"
+              placeholder="검색하기"
+              onChange={handleKeywordChange}
+              onKeyPress={handleKeypress}
+            />
+            <i className="fas fa-search"
+              onClick={handleSearch}
+            ></i>
+          </div>          
         </div>
         <div className="Header__Back">
           <Tabs
@@ -150,7 +150,7 @@ const Header = (props) => {
             <li><a onClick={handleUpcoming}>최근 개봉 &amp; 예정 영화</a></li>
             <li><div className="Nav__Menu__Search">
                   <input type="text"
-                         placeholder=""
+                         placeholder="검색하기"
                          onChange={handleKeywordChange}
                          onKeyPress={handleKeypress} />
                   <i className="fas fa-search"

@@ -1,74 +1,74 @@
 .Header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+
+  &__Inner {
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+
+    @include atMobile {
+      display: none;
+    }
+  }
+  &__Back {
+    visibility: hidden;
+    opacity: 0;
     position: absolute;
+    right: 0;
     top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
 
-    &__Inner {
-      transition: all 0.5s ease-in-out;
-      -webkit-transition: all 0.5s ease-in-out;
-      -moz-transition: all 0.5s ease-in-out;
-      -ms-transition: all 0.5s ease-in-out;
-      -o-transition: all 0.5s ease-in-out;
+    @include atMobile {
+      display: none;
+    }
+  }
+  &__Search {
+    margin-right: 50px;
+    display: inline-block;
+    vertical-align: middle;
 
-      @include atMobile {
-        display: none;
-      }
+    input {
+      height: 38px;
+      line-height: 38px;
+      border: none;
+      background: transparent;
+      color: #ccc;
+      font-size: 16px;
+      padding: 0 10px;
+      text-align: center;
+      margin: 5px 0;
+      font-family: "Noto Sans KR", sans-serif;
+      width: 150px;
+      outline: none;
+      transition: background 0.5s ease-in-out;
+      -webkit-transition: background 0.5s ease-in-out;
+      -moz-transition: background 0.5s ease-in-out;
+      -ms-transition: background 0.5s ease-in-out;
+      -o-transition: background 0.5s ease-in-out;
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      -o-border-radius: 10px;
     }
-    &__Back {
-      visibility: hidden;
-      opacity: 0;
-      position: absolute;
-      right: 0;
-      top: 0;
-      transition: all 0.5s ease-in-out;
-      -webkit-transition: all 0.5s ease-in-out;
-      -moz-transition: all 0.5s ease-in-out;
-      -ms-transition: all 0.5s ease-in-out;
-      -o-transition: all 0.5s ease-in-out;
-
-      @include atMobile {
-        display: none;
-      }
+    input:focus {
+      background: rgba(0, 0, 0, 0.3);
     }
-    &__Search {
-      margin-right: 50px;
-      display: inline-block;
-      vertical-align: middle;
-
-      input {
-        height: 38px;
-        line-height: 38px;
-        border: none;
-        background: transparent;
-        color: #ccc;
-        font-size: 16px;
-        padding: 0 10px;
-        text-align: center;
-        margin: 5px 0;
-        font-family: 'Noto Sans KR', sans-serif;
-        width: 150px;
-        outline: none;
-        transition: background 0.5s ease-in-out;
-        -webkit-transition: background 0.5s ease-in-out;
-        -moz-transition: background 0.5s ease-in-out;
-        -ms-transition: background 0.5s ease-in-out;
-        -o-transition: background 0.5s ease-in-out;
-        border-radius: 10px;
-        -webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
-        -ms-border-radius: 10px;
-        -o-border-radius: 10px;
-      }
-      input:focus {
-        background: rgba(0, 0, 0, 0.3);
-      }
-    }
-    &__Inner > div {
-      display: inline-block;
-      vertical-align: middle;
-    }
+  }
+  &__Inner > div {
+    display: inline-block;
+    vertical-align: middle;
+  }
 }
 
 .Header.on .Header__Inner {
@@ -82,39 +82,38 @@
 }
 
 .gnb ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 .gnb ul:after {
-    display: block;
-    clear: both;
-    content: '';
+  display: block;
+  clear: both;
+  content: "";
 }
 .gnb ul li {
-    float: left;
-    margin: 0 15px;
-    opacity: .5;
-    line-height: 60px;
-    cursor: pointer;
+  float: left;
+  margin: 0 15px;
+  opacity: 0.5;
+  line-height: 60px;
+  cursor: pointer;
 }
 .gnb ul li.on {
-    opacity: 1;
+  opacity: 1;
 }
 
 .fa-search {
-    font-size: 18px;
-    color: #ccc;
-    cursor: pointer;
+  font-size: 18px;
+  color: #ccc;
+  cursor: pointer;
 }
-
 
 .Nav {
   justify-content: space-between;
   display: none;
   align-items: center;
   padding: 22px 12px;
-  background-color: $blue;
+  background-color: $dblue;
 
   @include atMobile {
     display: flex;
@@ -125,7 +124,6 @@
 
   &__Logo {
     font-size: 1.6rem;
-
   }
   &__Menu {
     display: none;
@@ -152,21 +150,15 @@
     }
 
     &__Search {
-      display: flex;
-      vertical-align: middle;
-
       input {
         height: 38px;
-        line-height: 38px;
         border: solid 3px;
         background: transparent;
         color: #ccc;
         font-size: 16px;
-        padding: 0 10px;
         text-align: center;
         margin: 5px 0;
-        font-family: 'Noto Sans KR', sans-serif;
-        width: 150px;
+        font-family: "Noto Sans KR", sans-serif;
         outline: none;
         border-radius: 10px;
         -webkit-border-radius: 10px;
