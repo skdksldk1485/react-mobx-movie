@@ -9,10 +9,9 @@ https://isu-mobx-movie.netlify.app/
 
 #### 사용기술
 - HTML5 / CSS3
-- JavaScript(ES6+)
 - React
+- React Hooks
 - MobX
-- Express
 - SCSS(BEM 활용)
 
 <br />
