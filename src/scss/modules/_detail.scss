@@ -51,13 +51,16 @@
     padding-right: 1rem;
 
     &__Poster {
+      position: relative;
       width: 60vw;
+      z-index: 0;
     }
 
     &__Detail {
+      position: relative;
       text-align: left;
       margin-top: 30px;
-      position: static;
+      z-index: 0;
     }
   }
 }
