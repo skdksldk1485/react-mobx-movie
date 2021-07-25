@@ -1,0 +1,63 @@
+.Select {
+  &__Poster {
+    width: 20vw;
+    margin: 0 auto 0 0;
+
+    img {
+      box-shadow: 0 8px 38px rgba(0, 0, 0, 0.5), 0 5px 12px rgba(0, 0, 0, 0.4);
+      width: 100%;
+    }
+  }
+
+  &__Detail {
+    text-align: left;
+    margin-top: 30px;
+    position: relative;
+
+    h2 {
+      margin: 0;
+      font-weight: 500;
+      font-size: 32px;
+    }
+    h3 {
+      margin: 0;
+      font-weight: 400;
+      font-size: 20px;
+    }
+    &__Trailer {
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    &__Trailer .fa-youtube {
+      margin-right: 3px;
+      font-size: 20px;
+      vertical-align: text-bottom;
+    }
+  }
+}
+
+.Select__Detail .Select__Detail__Runtime {
+  margin-left: 10px;
+}
+.Select__Detail__Genre__list {
+  margin-right: 10px;
+}
+
+@include atMobile {
+  .Select {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    &__Poster {
+      width: 60vw;
+    }
+
+    &__Detail {
+      text-align: left;
+      margin-top: 30px;
+      position: static;
+    }
+  }
+}

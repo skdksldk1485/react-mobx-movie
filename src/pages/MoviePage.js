@@ -2,14 +2,12 @@ import React, { useEffect } from 'react';
 import { useObserver } from 'mobx-react-lite';
 import Movie from '../component/Movie';
 import MovieDetail from '../component/MovieDetail';
-import bgpng from '../images/bg.png';
 import store from '../store/MovieStore';
 
 
 const MoviePage = () => {
 
   const posterUrl = 'https://image.tmdb.org/t/p/original';
-  let bgStyle = null;
 
   useEffect(() => {
     store.getMovies(0);

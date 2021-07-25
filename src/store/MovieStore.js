@@ -35,7 +35,7 @@ const store = observable({
     const UPCOMING = '/movie/upcoming';
     const searchKeyword = '&query=' + this.searchWordFix;
     const SEARCH = '/search/movie';
-    const DEFAULT_URL = 'https://api.themoviedb.org/3';
+    const DEFAULT_URL = process.env.REACT_APP_DEFAULT_URL || '';
     const API_KEY = process.env.REACT_APP_API_KEY || '';
     const LANGUAGE_KR = '&language=ko-KR';
 
@@ -164,8 +164,8 @@ const store = observable({
   },
   callDetail(id){
     // 영화 선택시 디테일정보 호출
-    const DEFAULT_URL = 'https://api.themoviedb.org/3';
-    const API_KEY = '?api_key=dc11dbd0605b4d60cc66ce5e8363e063';
+    const DEFAULT_URL = process.env.REACT_APP_DEFAULT_URL || '';
+    const API_KEY = process.env.REACT_APP_API_KEY || '';
     const LANGUAGE_KR = '&language=ko-KR';
     const MOVIE_ID = '/movie/'+id;
 
@@ -197,8 +197,8 @@ const store = observable({
   },
   callTrailer(id){
     // 트레일러 호출
-    const DEFAULT_URL = 'https://api.themoviedb.org/3';
-    const API_KEY = '?api_key=dc11dbd0605b4d60cc66ce5e8363e063';
+    const DEFAULT_URL = process.env.REACT_APP_DEFAULT_URL || '';
+    const API_KEY = process.env.REACT_APP_API_KEY || '';
     const LANGUAGE_KR = '&language=ko-KR';
     const TRAILER_MOVIE_ID = '/movie/'+id+'/videos';
 
@@ -207,8 +207,8 @@ const store = observable({
       .catch (err => console.log(err))
   },
   callCredit(id){
-    const DEFAULT_URL = 'https://api.themoviedb.org/3';
-    const API_KEY = '?api_key=dc11dbd0605b4d60cc66ce5e8363e063';
+    const DEFAULT_URL = process.env.REACT_APP_DEFAULT_URL || '';
+    const API_KEY = process.env.REACT_APP_API_KEY || '';
     const LANGUAGE_KR = '&language=ko-KR';
     const CREDIT_MOVIE_ID = '/movie/'+id+'/credits';
 
@@ -246,8 +246,8 @@ const store = observable({
   },
   callRecommendMovie(id){
     // 추천영화 호출
-    const DEFAULT_URL = 'https://api.themoviedb.org/3';
-    const API_KEY = '?api_key=dc11dbd0605b4d60cc66ce5e8363e063';
+    const DEFAULT_URL = process.env.REACT_APP_DEFAULT_URL || '';
+    const API_KEY = process.env.REACT_APP_API_KEY || '';
     const LANGUAGE_KR = '&language=ko-KR';
     const RECOMMEND_MOVIE_ID = '/movie/'+id+'/recommendations';
 

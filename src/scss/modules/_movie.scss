@@ -141,8 +141,9 @@
 }
 
 .Movie__Section.on {
-  opacity: 0;
-  visibility: hidden;
+  * {
+    visibility: hidden;
+  }
 }
 
 .Poster__Wrap img {
