@@ -1,7 +1,8 @@
 import { observable } from 'mobx';
 import axios from 'axios';
 import _ from 'lodash';
-
+import dotenv from "dotenv";
+dotenv.config();
 
 const store = observable({
   movieList: [], // 메인 영화 리스트
@@ -35,7 +36,7 @@ const store = observable({
     const searchKeyword = '&query=' + this.searchWordFix;
     const SEARCH = '/search/movie';
     const DEFAULT_URL = 'https://api.themoviedb.org/3';
-    const API_KEY = '?api_key=cd966d78c5d6f111808969f4fa31cf71';
+    const API_KEY = process.env.REACT_APP_API_KEY || '';
     const LANGUAGE_KR = '&language=ko-KR';
 
     if ( sortPram == '0') {
