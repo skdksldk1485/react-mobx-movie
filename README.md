@@ -38,5 +38,7 @@ https://isu-mobx-movie.netlify.app/
 ### ✨ 영화 트레일러 확인
 ![Animation5](https://user-images.githubusercontent.com/29578054/122950212-3d8c1a80-d3b7-11eb-8a63-cca4ecfa01bc.gif)
 
+### ✨ 반응형 웹
+![모바일웹](https://user-images.githubusercontent.com/29578054/131370459-7d002d89-7f6c-4bc4-a7b0-9a8537fee29a.PNG)
 
 
