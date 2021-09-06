@@ -32,7 +32,7 @@ https://isu-mobx-movie.netlify.app/
 
 
 ### ✨ 영화 상세정보 확인
-![Animation7 (2)](https://user-images.githubusercontent.com/29578054/132247850-7b18ac79-c62c-47a5-9b3b-920402adf164.gif)
+![Animation11_2](https://user-images.githubusercontent.com/29578054/132248844-8f59f343-4bf2-4d28-b827-cbdc27ce2c9c.gif)
 
 
 ### ✨ 영화 트레일러 확인
