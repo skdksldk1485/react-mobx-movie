@@ -1,4 +1,4 @@
-## 프로젝트
+## 프로젝트 
 이번 프로젝트에서는 MobX를 통한 상태관리를 경험해보고 공부해볼 목적으로 <br />
 React와 MobX를 사용하여 개발한 영화사이트입니다.
 
@@ -14,6 +14,21 @@ https://isu-mobx-movie.netlify.app/
 - React Hooks
 - MobX
 - SCSS(BEM 활용)
+
+#### 담당업무
+- MobX를 활용한 상태관리
+- TMDB API를 사용한 영화정보검색 기능 구현 (상세정보, 트레일러)
+- Material-UI를 사용하여 헤더 구현
+- BEM 방법론을 적용한 SCSS로 웹 디자인 구성
+- Transaction, Transition을 사용한 애니메이션 구현 (배경화면 전환)
+
+#### 구현기능
+- 배경화면 전환
+- 메뉴 선택
+- 검색기능
+- 영화 상세정보 확인
+- 영화 트레일러 확인
+- 반응형 웹
 
 <br />
 <hr />
