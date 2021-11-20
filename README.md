@@ -2,8 +2,12 @@
 이번 프로젝트에서는 MobX를 통한 상태관리를 경험해보고 공부해볼 목적으로 <br />
 React와 MobX를 사용하여 개발한 영화사이트입니다.
 
+<br />
+
+## 💻 사이트
+
 > 아래 링크에서 프로젝트 데모 확인이 가능합니다. <br />
-https://isu-mobx-movie.netlify.app/
+- 🎯 사이트 :https://isu-mobx-movie.netlify.app/
 
 <br />
 
