@@ -23,11 +23,12 @@ https://user-images.githubusercontent.com/29578054/142731258-306e4601-1e04-4477-
 <br />
 
 ## 📗사용기술
-- HTML5 / CSS3
-- React
-- React Hooks
-- MobX
-- SCSS(BEM 활용)
+  - Front End
+    - HTML5 / CSS3
+    - React
+    - React Hooks
+    - MobX
+    - SCSS(BEM 활용)
 
 <br />
 
